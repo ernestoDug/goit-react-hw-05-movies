@@ -1,20 +1,22 @@
 import axios from 'axios';
 
-const MY_KEY = '28539247-0afb9c376c93f2bc11eaacc3c';
+// const MY_KEY = ' f56a897a3a6f379d289b4251d1cb1dbb';
 
-const BASE_URL = 'https://pixabay.com/api';
+// const BASE_URL = 'https://api.themoviedb.org';
 
-export const fetchIMG = (searchWord, page) => {
+export const fetchIMG = () => {
   const responseIMG = axios.get(
-    `${BASE_URL}/?key=${MY_KEY}&q=${searchWord}&page=${page}`,
+ 'https://api.themoviedb.org/3/movie/157336/videos?api_key=f56a897a3a6f379d289b4251d1cb1dbb',
     {
-      params: {
-        image_type: 'photo',
-        orientation: 'horizontal',
-        safesearch: 'true',
-        per_page: 12,
-      },
+      // params: {
+      //   image_type: 'photo',
+      //   orientation: 'horizontal',
+      //   safesearch: 'true',
+      //   per_page: 12,
+      // },
     }
   );
+  console.log(responseIMG)
+
   return responseIMG;
 };

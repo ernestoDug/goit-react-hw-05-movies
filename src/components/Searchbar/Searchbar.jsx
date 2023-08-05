@@ -1,36 +1,38 @@
 // import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 // npm i react-toastify
 import { useContext } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import css from './Searchbar.module.css';
+import { fetchIMG } from 'helpers/fetchIMG'; 
 
 import { Context } from 'components/App';
-
+// *******************************************************************
 const Searchbar = () => {
   const context = useContext(Context);
 
-  const [findImages, setFindImages] = useState('');
+  const [findMovies, setFindMovies] = useState('');
 
   // шукач
   const changer = event => {
-    // console.log(event);
-    setFindImages(event.target.value.toLowerCase());
+    console.log(findMovies);
+    setFindMovies(event.target.value.toLowerCase());
   };
   // відпрвник
   const submiter = event => {
     event.preventDefault();
-    // ні пустоті
-    if (findImages.trim() === '') {
-      toast.info('🙊Треба почати пошук🙊');
-      return;
-    }
+    fetchIMG()
+    // // ні пустоті
+    // if (findImages.trim() === '') {
+    //   toast.info('🙊Треба почати пошук🙊');
+    //   return;
+    // }
     // для апп
-    context.onSubmit(findImages);
+    // context.onSubmit();
 
     // очищувач форми
-    setFindImages('');
+    setFindMovies('');
   };
 
   return (
@@ -47,7 +49,7 @@ const Searchbar = () => {
             // autocomplete="off"
             // autofocus
             placeholder="Почніть пошук..."
-            value={findImages}
+            value={findMovies}
             onChange={changer}
           />
         </form>
