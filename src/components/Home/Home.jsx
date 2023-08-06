@@ -1,19 +1,20 @@
 // import PropTypes from 'prop-types';
 
 import { useContext } from 'react';
-import css from './ImageGallery.module.css';
+import css from './Home.module.css';
 
-import ImageGalleryItem from '../ImageGalleryItem';
+import HomeList from '../HomeList';
 import { Context } from 'components/App';
 
 const ImageGallery = () => {
   const context = useContext(Context);
+  context.fetcher()
   return (
     <ul className={css.gallery}>
       {context.imageForGalery &&
         context.imageForGalery.map(
           ({ id, webformatURL, largeImageURL, tags }) => (
-            <ImageGalleryItem
+            <HomeList
               key={id}
               webformatURL={webformatURL}
               largeImageURL={largeImageURL}

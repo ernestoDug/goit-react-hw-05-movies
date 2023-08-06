@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import css from './Searchbar.module.css';
-import { fetchIMG } from 'helpers/fetchIMG'; 
+import { fetcher } from 'helpers/fetcher'; 
 
 import { Context } from 'components/App';
 // *******************************************************************
@@ -22,7 +22,7 @@ const Searchbar = () => {
   // відпрвник
   const submiter = event => {
     event.preventDefault();
-    fetchIMG()
+    fetcher()
     // // ні пустоті
     // if (findImages.trim() === '') {
     //   toast.info('🙊Треба почати пошук🙊');

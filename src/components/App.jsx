@@ -1,13 +1,15 @@
-import { ToastContainer } from 'react-toastify';
+// import { ToastContainer } from 'react-toastify';
+import { Routes, Route, NavLink } from 'react-router-dom';
+
+
 // npm i react-toastify
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Loader from './Loader/Loader';
+// import Loader from './Loader/Loader';
 
 import Searchbar from './Searchbar';
-import ImageGallery from './ImageGallery';
-import Button from './Button';
-import { fetchIMG } from '../helpers/fetchIMG';
+// import Home from './Home';
+import { fetcher } from '../helpers/fetcher.js';
 import React, { useState, useEffect } from 'react';
 
 export const Context = React.createContext();
@@ -16,110 +18,80 @@ export const Context = React.createContext();
 // f56a897a3a6f379d289b4251d1cb1dbb
 
 const App = () => {
-  const [inputsearch, setInputSearch] = useState('');
-  const [responseIMG, setResponseIMG] = useState([]);
-  const [curPg, setCurPg] = useState('');
-  const [loading, setLoading] = useState(false);
+  // const [inputsearch, setInputSearch] = useState('');
+  const [respMovs, setResponseMovs] = useState([]);
+  // const [loading, setLoading] = useState(false);
 
   // для умов сповіщенням 1
   const [status, setStatus] = useState('');
-  // для умов сповіщенням 2
-  const [respHits, setRespHits] = useState([]);
-  // для умов сповіщенням 3
-  const [totall, setTotall] = useState('');
+
 
   // отримувач з форми скидач сторінки та галереї
-  const submiterFromForm = inputSearch => {
-    setInputSearch(inputSearch);
-    setCurPg(1);
-    setResponseIMG([]);
-    // console.log(inputSearch, "Є");
-  };
+  // const submiterFromForm = inputSearch => {
+  //   setInputSearch(inputSearch);
+  //   setResponseIMG([]);
+  //   // console.log(inputSearch, "Є");
+  // };
 
-  // давай ще
-  const givMeMore = () => {
-    setCurPg(prevCurpg => prevCurpg + 1);
-  };
+
   // запитувач
 
   useEffect(() => {
-    if (!inputsearch) {
-      return;
-    }
+    // if (!inputsearch) {
+    //   return;
+    // }
     //  лодер +...
-    setLoading(true);
-    fetchIMG(inputsearch, curPg)
-      .then(respImg => {
-        // якщо пагінація
-        curPg > 1 && status === 200
-          ? setResponseIMG(prevResponseIMG => [
-              ...prevResponseIMG,
-              ...respImg.data.hits,
-            ])
-          : // якщо вперше
-            setResponseIMG(respImg.data.hits);
-        //  для сповіщення 1
-        setTotall(respImg.data.totalHits);
-        // для  сповіщення 2
-        setRespHits(respImg.data.hits);
+    // setLoading(true);
+    fetcher()
+      .then(resp => {
+       setResponseMovs(resp.data);
         // для сповіщення 3
         setStatus(200);
+        console.log(resp.data)
+
       })
       .catch(error => {
         toast.warn(`🐒Отакої! ${error} 🐒`);
       })
       // лодер -
       .finally(() => {
-        setLoading(false);
+        // setLoading(false);
       });
-  }, [curPg, inputsearch, status]);
+  }, [status]);
   // --------------------------------------------------------------------
   // скільки знайшли
-  useEffect(() => {
-    if (responseIMG.length !== 0 && curPg === 1 && status === 200) {
-      toast.success(`🐒Ми знайшли ${totall} 🍌..., світлин 🐒`);
-    }
-  }, [curPg, responseIMG.length, status, totall]);
+ 
   // // нічого не знайшли
-  useEffect(() => {
-    if (respHits.length === 0 && status === 200) {
-      toast.warn(`🐒 Ми нічого не знайшли 🐒`);
-    }
-  }, [respHits.length, status]);
+  // useEffect(() => {
+  //   if (respMovs.length === 0 && status === 200) {
+  //     toast.warn(`🐒 Ми нічого не знайшли 🐒`);
+  //   }
+  // }, [respHits.length, status]);
 
   return (
     <Context.Provider
       value={{
-        imageForGalery: responseIMG,
-        givMeMore: givMeMore,
-        onSubmit: submiterFromForm,
+        movsForList: respMovs,
+        fetcher: fetcher
+        // onSubmit: submiterFromForm,
       }}
     >
       <div>
-        <Searchbar />
-        <ToastContainer
-          position="top-center"
-          autoClose={2000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="colored"
-        />
+<nav>
+<NavLink to='/'> Home </NavLink>
+<NavLink to='/Movies'> Movies </NavLink>
 
-        {/* лоадер чи галерея?  */}
+</nav>
+        <Routes> 
+<Route path = '/' element={<div> Home </div>} />
+<Route path = '/Movies' element={<div> Movies </div>} />
 
-        {responseIMG.length !== 0 && (
-          <>
-            <ImageGallery />
-            {loading === true && <Loader />}
-          </>
-        )}
-        {/* кнопка */}
-        {responseIMG.length !== 0 && loading === false && <Button />}
+ 
+      
+                     
+      
+       </Routes>
+        <Searchbar/>
       </div>
     </Context.Provider>
   );
