@@ -1,29 +1,32 @@
 // import { ToastContainer } from 'react-toastify';
-import { Routes, Route, NavLink } from 'react-router-dom';
-
-
 // npm i react-toastify
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import Loader from './Loader/Loader';
+// import Searchbar from './Searchbar';
+// ---------------------------------------------------------------------------------
+import { Routes, Route } from 'react-router-dom';
+// import React, { useState, useEffect } from 'react';
+import Home from 'pages/Home';
+import Movies from 'pages/Movies';
+// import styled from 'styled-components';
+// npm i styled-components
+import { Container, Header, Logo, Link } from "./App.styled";
 
-import Searchbar from './Searchbar';
-// import Home from './Home';
-import { fetcher } from '../helpers/fetcher.js';
-import React, { useState, useEffect } from 'react';
 
-export const Context = React.createContext();
+
+
+// export const Context = React.createContext();
 
 
 // f56a897a3a6f379d289b4251d1cb1dbb
 
 const App = () => {
   // const [inputsearch, setInputSearch] = useState('');
-  const [respMovs, setResponseMovs] = useState([]);
   // const [loading, setLoading] = useState(false);
 
   // для умов сповіщенням 1
-  const [status, setStatus] = useState('');
+  // const [status, setStatus] = useState('');
 
 
   // отримувач з форми скидач сторінки та галереї
@@ -36,28 +39,7 @@ const App = () => {
 
   // запитувач
 
-  useEffect(() => {
-    // if (!inputsearch) {
-    //   return;
-    // }
-    //  лодер +...
-    // setLoading(true);
-    fetcher()
-      .then(resp => {
-       setResponseMovs(resp.data);
-        // для сповіщення 3
-        setStatus(200);
-        console.log(resp.data)
-
-      })
-      .catch(error => {
-        toast.warn(`🐒Отакої! ${error} 🐒`);
-      })
-      // лодер -
-      .finally(() => {
-        // setLoading(false);
-      });
-  }, [status]);
+  
   // --------------------------------------------------------------------
   // скільки знайшли
  
@@ -69,31 +51,29 @@ const App = () => {
   // }, [respHits.length, status]);
 
   return (
-    <Context.Provider
-      value={{
-        movsForList: respMovs,
-        fetcher: fetcher
-        // onSubmit: submiterFromForm,
-      }}
-    >
-      <div>
-<nav>
-<NavLink to='/'> Home </NavLink>
-<NavLink to='/Movies'> Movies </NavLink>
 
-</nav>
+     <Container>
+      <Header>
+        <Logo>
+        <span role="img" aria-label="icon heat">
+        🎩 film dimension
+          </span>{" "}
+        </Logo>   
+	    <nav className="menuItem">
+                  <Link  to='/'> Home </Link> </nav>
+    <nav>  <Link  to='/Movies'> Movies </Link> </nav>
+          
+      </Header>
+
         <Routes> 
-<Route path = '/' element={<div> Home </div>} />
-<Route path = '/Movies' element={<div> Movies </div>} />
-
- 
-      
-                     
-      
+<Route path = '/' element={<Home/>} />
+<Route path = '/movies' element={<Movies/> } />
+<Route path = '/movies/:moviesDetal' element={<div> Nazva </div>} />
+  
+                          
        </Routes>
-        <Searchbar/>
-      </div>
-    </Context.Provider>
+        {/* <Searchbar/> */}
+        </Container>
   );
 };
 

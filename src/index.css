@@ -14,12 +14,6 @@ code {
     monospace;
 }
 
-/* *****************************************************
-*****************************************************
-28539247-0afb9c376c93f2bc11eaacc3c
-
-
-***************************************************** */
 
 html {
   box-sizing: border-box;
@@ -37,8 +31,8 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-  color: #212121;
-  background-color: #a6c7e2;
+  background: linear-gradient(45deg, #fff1eb,#aee8db);
+  ;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -46,11 +40,7 @@ body {
 /*
  * Стили компонента App
  */
-.App {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 16px;
-  padding-bottom: 24px;
-}
 
-
+/* ------------------------------------------------------------------
+ */
+      
