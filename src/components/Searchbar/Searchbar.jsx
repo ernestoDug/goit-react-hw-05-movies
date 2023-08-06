@@ -2,15 +2,12 @@
 import { useState } from 'react';
 // import { toast } from 'react-toastify';
 // npm i react-toastify
-import { useContext } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import css from './Searchbar.module.css';
 import { fetcher } from 'helpers/fetcher'; 
 
-import { Context } from 'components/App';
 // *******************************************************************
 const Searchbar = () => {
-  const context = useContext(Context);
 
   const [findMovies, setFindMovies] = useState('');
 

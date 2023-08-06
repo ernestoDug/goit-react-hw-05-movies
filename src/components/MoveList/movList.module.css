@@ -1,0 +1,13 @@
+.moviesItem
+{
+    list-style: none;
+    transition: linear 300ms  background;
+    margin: 5px;
+    font-size: large;
+
+    &:hover
+    {
+      background-color: #91cab6;
+      border-radius: 4px/16px;
+    }
+}

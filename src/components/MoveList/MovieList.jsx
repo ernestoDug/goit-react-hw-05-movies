@@ -1,13 +1,10 @@
 import 'react-toastify/dist/ReactToastify.css';
 // import PropTypes from 'prop-types';
 // import { useState } from 'react';
-import css from './HomeList.module.css';
-
 // **************************
-import { Link } from 'react-router-dom';
+import css from './movList.module.css'
 
-
-const HomeList = ({ id, title }) => {
+const MovieList = ({ title }) => {
   // const [showMod, setShowMod] = useState(false);
   // const [modalURL, setModalURL] = useState('');
 
@@ -16,11 +13,11 @@ const HomeList = ({ id, title }) => {
   return (
     <>
       {/* галерея умова */}
-      <Link>
-      <li className={css.galleryItem}>
+    
+      <li className={css.moviesItem}>
             {title}   
       </li>
-      </Link>
+  
     </>
   );
 };
@@ -32,4 +29,4 @@ const HomeList = ({ id, title }) => {
 //   tags: PropTypes.string.isRequired,
 // };
 
-export default HomeList;
+export default MovieList;

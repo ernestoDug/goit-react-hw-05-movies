@@ -1,25 +1,12 @@
-// import { ToastContainer } from 'react-toastify';
-// npm i react-toastify
-// import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-// import Loader from './Loader/Loader';
-// import Searchbar from './Searchbar';
-// ---------------------------------------------------------------------------------
 import { Routes, Route } from 'react-router-dom';
 // import React, { useState, useEffect } from 'react';
 import Home from 'pages/Home';
 import Movies from 'pages/Movies';
-// import styled from 'styled-components';
-// npm i styled-components
-import { Container, Header, Logo, Link } from "./App.styled";
-
-
-
-
-// export const Context = React.createContext();
-
-
-// f56a897a3a6f379d289b4251d1cb1dbb
+// import {  Link } from "./App.styled";
+import Header from './Header/Header';
+import Logo from './Logo/Logo';
+import Details from './Details/Details';
+import Layout from './Layout/Layout';
 
 const App = () => {
   // const [inputsearch, setInputSearch] = useState('');
@@ -35,45 +22,31 @@ const App = () => {
   //   setResponseIMG([]);
   //   // console.log(inputSearch, "Є");
   // };
-
-
-  // запитувач
-
-  
-  // --------------------------------------------------------------------
-  // скільки знайшли
  
-  // // нічого не знайшли
-  // useEffect(() => {
-  //   if (respMovs.length === 0 && status === 200) {
-  //     toast.warn(`🐒 Ми нічого не знайшли 🐒`);
-  //   }
-  // }, [respHits.length, status]);
-
   return (
-
-     <Container>
+     <div className='container'>
       <Header>
-        <Logo>
-        <span role="img" aria-label="icon heat">
-        🎩 film dimension
-          </span>{" "}
-        </Logo>   
-	    <nav className="menuItem">
-                  <Link  to='/'> Home </Link> </nav>
-    <nav>  <Link  to='/Movies'> Movies </Link> </nav>
-          
+      <Logo/>
       </Header>
 
         <Routes> 
 <Route path = '/' element={<Home/>} />
-<Route path = '/movies' element={<Movies/> } />
-<Route path = '/movies/:moviesDetal' element={<div> Nazva </div>} />
+<Route path = '/movies' element={<Layout/> } >
+<Route index = '/movies' element={<Movies/> } />
+
+<Route path = 'id' element={<Details/>} />
+{/* <Route path = 'id' element={<div> Nazva </div>} /> */}
+
+</Route>
+
+
+{/* <Route path = '/movies/:reviews' element={<div> Nazva </div>} /> */}
+{/* <Route path="*" element={<NotFound />} /> */}
+
   
                           
        </Routes>
-        {/* <Searchbar/> */}
-        </Container>
+        </div>
   );
 };
 

@@ -1,11 +1,29 @@
-
+// import { useParams } from "react-router-dom";
+// import { fetcher } from '../helpers/fetcher.js';
+import { Outlet } from "react-router-dom"
+// import Details from "components/Details/Details"
+import Searchbar from "components/Searchbar/Searchbar"
 
 
 const Movies = () =>{
-    return <div>
 
+    // const { id } = useParams();
+    // const movies = fetcher(id);
+
+    return (
+    <main>
+     <span>
 📺
-    </div>
+</span>
+<Searchbar/>
+
+
+<Outlet/>
+  </main>
+    )
+ 
+    
+    
 
 
 

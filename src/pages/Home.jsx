@@ -1,26 +1,17 @@
 import { fetcher } from '../helpers/fetcher.js';
 import React, { useEffect, useState } from 'react';
-import HomeList from 'components/HomeList/HomeList.jsx';
-// import {H3}  from "./App.styled";
+import MovieList from 'components/MoveList/MovieList.jsx';
+import { Link } from 'react-router-dom';
 
-// *************************************************************************
 const Home = () => {
       const [respMovs, setResponseMovs] = useState([]);
 
     useEffect(() => {
-        // if (!inputsearch) {
-        //   return;
-        // }
-        //  лодер +...
-        // setLoading(true);
-        fetcher()
+               fetcher()
           .then(resp => {
            setResponseMovs(resp.data.results);
-            // для сповіщення 3
-            // setStatus(200);
-            console.log(resp.data.results, 6555555555555555)
-    
-          })
+                       console.log(resp.data.results, 6555555555555555)
+              })
           .catch(error => {
             // toast.warn(`🐒Отакої! ${error} 🐒`);
           })
@@ -30,23 +21,29 @@ const Home = () => {
           });
       }, []);
  
-    return (<div>
-        <>
-🏰 <h3> 🧛‍♂️Welcome to the palace of trending movies</h3>
-        </>
-        <ul>
+    return (
+        <main>
+            <div><img width={300} src="https://2day.kh.ua/sites/default/files/wp-content/uploads/2017/06/4ui4l1.jpg" alt="" /></div>       
+🏰 <h1 className='h1'> 🧛‍♂️Welcome to the palace of trending movies</h1>
+        <ul className= 'moviesList'>
       {respMovs &&
               respMovs.map(
-          ({ id, title }) => (
-            <HomeList
-              key={id}
-              title = {title}
-            />
+                  ({ id, title }) => (
+                      <Link  
+                      key={id}
+                      to={`${id}`}
+                      >
+                          <MovieList
+             
+             title = {title}
+             />
+              </Link>
           )
-        )}{' '}
+          )}{' '}
     </ul>
+          
+          </main>)
 
-</div>)
 }
 
 

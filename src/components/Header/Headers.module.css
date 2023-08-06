@@ -1,0 +1,38 @@
+.headers {
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 0;
+    margin-bottom: 16px;
+    border-bottom: 1px solid black;
+    background-color: #82f3cb;
+    ;
+    &:nav {
+      display: flex;
+    }
+
+}
+
+.Link  {
+  padding: 8px 10px;
+  border-radius: 6px/16px;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  transition: linear 1000ms  background;
+
+
+  &:focus {
+    color: white;
+    background-color: #009A63;
+  }
+  &:hover
+  {
+    background-color: #009A63;
+  }
+;
+
+}
+
+
