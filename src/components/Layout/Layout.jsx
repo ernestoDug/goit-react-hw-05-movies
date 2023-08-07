@@ -1,15 +1,20 @@
 
 import { Outlet } from "react-router-dom"
-import Details from "components/Details/Details"
+import Header from "components/Header/Header";
+import Logo from "components/Logo/Logo";
+
 
 
 const Layout = () => {
 
 return (
-    <> 
-<Details/> 
+
+     <div className='container'> 
+<Header>
+   <Logo/>
+   </Header>
 <Outlet/>
-</>
+</div>
 )
 
 }

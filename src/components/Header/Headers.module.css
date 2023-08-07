@@ -30,9 +30,10 @@
   &:hover
   {
     background-color: #009A63;
-  }
-;
-
+  };
 }
 
+/* Link.active {
+  background-color: #009A63;
 
+} */

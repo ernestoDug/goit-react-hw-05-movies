@@ -34,8 +34,7 @@ const Home = () => {
                       to={`${id}`}
                       >
                           <MovieList
-             
-             title = {title}
+                          title = {title}
              />
               </Link>
           )
