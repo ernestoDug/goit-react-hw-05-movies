@@ -1,3 +1,0 @@
-export const Credits = () => {
-"xcxc"
-}

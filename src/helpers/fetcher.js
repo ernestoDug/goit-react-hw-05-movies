@@ -6,8 +6,8 @@ const BASE_URL = 'https://api.themoviedb.org';
 
 export const fetcher = () => {
   const response= axios.get(
-// ` ${BASE_URL}/trending/get-trending?api_key=${MY_KEY}`,  
 `${BASE_URL}/3/trending/all/day?language=en-US&api_key=${MY_KEY}`,{
+
       // params: {
       //   image_type: 'photo',
       //   orientation: 'horizontal',

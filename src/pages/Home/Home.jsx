@@ -1,4 +1,4 @@
-import { fetcher } from '../helpers/fetcher.js';
+import { fetcher } from '../../helpers/fetcher.js';
 import React, { useEffect, useState } from 'react';
 import MovieList from 'components/MoveList/MovieList.jsx';
 import { Link } from 'react-router-dom';
@@ -23,15 +23,15 @@ const Home = () => {
  
     return (
         <main>
-            <div><img width={300} src="https://2day.kh.ua/sites/default/files/wp-content/uploads/2017/06/4ui4l1.jpg" alt="" /></div>       
 🏰 <h1 className='h1'> 🧛‍♂️Welcome to the palace of trending movies</h1>
+            <div><img width={300} src="https://2day.kh.ua/sites/default/files/wp-content/uploads/2017/06/4ui4l1.jpg" alt="" /></div>       
         <ul className= 'moviesList'>
       {respMovs &&
               respMovs.map(
                   ({ id, title }) => (
                       <Link  
                       key={id}
-                      to={`${id}`}
+                      to={`/${id}`}
                       >
                           <MovieList
                           title = {title}
