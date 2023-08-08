@@ -1,6 +1,6 @@
 
 import { useParams } from "react-router-dom";
-import { fetcherr } from "helpers/fetcherr";
+import { fetcherrr } from "helpers/fetcherrr";
 import { useEffect, useState } from "react";
 
 // import { useContext } from 'react';
@@ -13,14 +13,19 @@ import { useEffect, useState } from "react";
 const MovieDetails = () => 
 {
   const [responseMovsId, setResponseMovsId] = useState('');
-  const { id } = useParams();
+  const  {id}  = useParams();
+  const { original_title, release_date, vote_average, overview,  genres
+  } = responseMovsId
 
+  // const pp = (responseMovsId.release_date.substr(0, 4))
 
   useEffect(() => {
-    fetcherr(id)
+    fetcherrr(id)
   .then(resp => {
-    setResponseMovsId(resp.data.results);
-            console.log(responseMovsId, "fscewcwecc")
+    setResponseMovsId(resp.data);
+            console.log(resp, "***************")
+            console.log(resp.data.genres,  45555555555555);
+
    })
   .catch(error => {
   // toast.warn(`🐒Отакої! ${error} 🐒`);
@@ -29,7 +34,7 @@ const MovieDetails = () =>
   .finally(() => {
   // setLoading(false);
   });
-  }, [id, responseMovsId]);
+  }, [id]);
   
 
 
@@ -37,20 +42,33 @@ const MovieDetails = () =>
 return (
 <div>
 <img src="" alt="" />
- <h2>
-   xz xz z zxxzxzx
- </h2>
- <p>
-  
- </p>
  <h3>
-         </h3>
+{original_title} <span>{release_date }</span>
+ </h3>
+ <p>
+ User Score: {vote_average*10}%
+ </p>
+ <h4>
+ Overview 
+         </h4>
          <p>
-                         </p>
-                         <h4> </h4>
-                         <p>
+                  {overview}       </p>
 
-                         </p>
+
+                         <h5> 
+                         Genres
+                         </h5>
+                         <ul >
+      {genres.map(({ id, name,  }) => (
+        <li id={id} key={id} name={name}>
+        {name}
+        </li>
+      ))}
+    </ul>
+<p>
+  Additional information
+</p>
+
 </div>
 
 )

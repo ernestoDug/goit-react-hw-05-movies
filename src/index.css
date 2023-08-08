@@ -48,3 +48,8 @@ body {
 {
   color: #56b090
 }
+
+.listGanreItem
+{
+  list-style: none;
+}

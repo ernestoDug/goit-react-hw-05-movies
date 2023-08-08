@@ -1,5 +1,6 @@
 // import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 // import { toast } from 'react-toastify';
 // npm i react-toastify
 import 'react-toastify/dist/ReactToastify.css';
@@ -16,9 +17,10 @@ const Searchbar = () => {
 
 
   const [findMovie, setFindMovie] = useState('');
-  const [responseMovs, setResponseMovs] = useState('');
+  const [responseMovs, setResponseMovs] = useState(''); 
 
-  // const { q } = useParams();
+  const q = useParams();
+  console.log(q, "*********************")
   
   
   // шукач
@@ -37,9 +39,9 @@ const Searchbar = () => {
 // ***********************
 useEffect(() => {
   fetcherr(findMovie)
-.then(resp => {
+  .then(resp => {
     setResponseMovs(resp.data.results);
-          console.log(resp.data.results, "fscewcwecc", responseMovs)
+          console.log(resp.data.results, "fscewcwecc")
  })
 .catch(error => {
 // toast.warn(`🐒Отакої! ${error} 🐒`);
@@ -48,7 +50,8 @@ useEffect(() => {
 .finally(() => {
 // setLoading(false);
 });
-}, [findMovie, responseMovs]);
+}, [findMovie]);
+
 
 
 

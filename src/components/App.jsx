@@ -24,25 +24,20 @@ const App = () => {
   // отримувач з форми скидач сторінки та галереї
 
     return (
-    // <Context.Provider
-    //     value={{
-    //       responseMovs: responseMovs
-
-    //      }}> 
-    <Routes>
+           <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="movies" element={<Movies />}>
-          <Route path="movie/:movieId/" element={<MovieDetails />}>
-            <Route path="movie/:movieId/cast" element={<Cast />} />
-            <Route path="movie/:movieId/reviews" element={<Reviews />} />
-          </Route>
-        </Route>
-      </Route>
-      {/* <Route path="*" element={<NotFound />} /> */}
+        <Route path="movies" element={<Movies/>}/>
+          <Route path="movies/:id" element={<MovieDetails />}/>
+          <Route path="movies/:movieId/cast" element={<Cast />} />
+          <Route path="movies/:movieId/reviews" element={<Reviews />} />
+            </Route>
+
     </Routes>
-    // </Context.Provider>
   );
+
+
+  
 };
 
 export default App;

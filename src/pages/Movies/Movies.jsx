@@ -1,6 +1,6 @@
 // import { useParams } from "react-router-dom";
 // import { fetcher } from '../helpers/fetcher.js';
-import { Outlet } from "react-router-dom"
+// import { Outlet } from "react-router-dom"
 // import Details from "components/Details/Details"
 import Searchbar from "components/Searchbar/Searchbar"
 
@@ -17,7 +17,7 @@ const Movies = () =>{
 </span>
 <Searchbar/>
 
-<Outlet/>
+{/* <Outlet/> */}
   </main>
     )
  

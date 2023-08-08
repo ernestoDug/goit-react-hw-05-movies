@@ -31,8 +31,9 @@ const Home = () => {
                   ({ id, title }) => (
                       <Link  
                       key={id}
-                      to={`/${id}`}
+                      to={`movies/${id}`}
                       >
+                        
                           <MovieList
                           title = {title}
              />

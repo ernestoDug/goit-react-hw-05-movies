@@ -26,7 +26,7 @@ const Header = ({ children }) => {
       </nav>
       <nav>
         {' '}
-        <StyledLink  className={css.Link} to="/Movies">
+        <StyledLink  className={css.Link} to="/movies">
           {' '}
           Movies{' '}
         </StyledLink>{' '}
