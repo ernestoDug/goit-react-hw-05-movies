@@ -32,8 +32,7 @@ const Home = () => {
                       <Link  
                       key={id}
                       to={`movies/${id}`}
-                      >
-                        
+                      >                        
                           <MovieList
                           title = {title}
              />
@@ -41,6 +40,9 @@ const Home = () => {
           )
           )}{' '}
     </ul>
+
+
+    
           
           </main>)
 

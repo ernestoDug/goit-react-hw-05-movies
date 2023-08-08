@@ -12,7 +12,6 @@ const MovieList = ({ title }) => {
 
   return (
     <>
-      {/* галерея умова */}
     
       <li className={css.moviesItem}>
             {title}   

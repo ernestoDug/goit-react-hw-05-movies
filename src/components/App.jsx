@@ -11,11 +11,8 @@ import MovieDetails from '../pages/MovieDetails/MovieDetails';
 import Layout from './Layout/Layout';
 // import NotFound from 'pages/notFound';
 import Reviews from './Reviews/Reviews';
-import { Cast } from './Cast/Credits';
-
-export const Context = React.createContext();
-
-
+import { Cast } from 'components/Cast/Cast';
+ 
 
 const App = () => {
   // const [inputsearch, setInputSearch] = useState('');
@@ -28,10 +25,12 @@ const App = () => {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="movies" element={<Movies/>}/>
-          <Route path="movies/:id" element={<MovieDetails />}/>
-          <Route path="movies/:movieId/cast" element={<Cast />} />
-          <Route path="movies/:movieId/reviews" element={<Reviews />} />
+          <Route path="movies/:id" element={<MovieDetails />}>
+          <Route path="/movies/:id/cast" element={< Cast />} />
+          <Route path="/movies/:id/reviews" element={<Reviews />} />
             </Route>
+            </Route>
+
 
     </Routes>
   );
