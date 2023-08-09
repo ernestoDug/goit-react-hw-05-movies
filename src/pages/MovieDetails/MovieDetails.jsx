@@ -20,6 +20,7 @@ const MovieDetails = () =>
   const {original_title, vote_average, overview,  poster_path,
 
    } = responseMovsId
+   
 
   // const pp = (responseMovsId.release_date.substr(0, 4))
   
@@ -31,9 +32,6 @@ const MovieDetails = () =>
     setResponseMovsId(resp.data);
     setGenres(resp.data.genres)
     setData(resp.data.release_date.slice(0,4));
-
-
-
 
 
    })
@@ -53,7 +51,7 @@ console.log(typeof(genres), "71")
 console.dir(poster_path, "78")
 
 return (
-<div className="contMD">
+  <main className="contMD"> 
 <img src= {`https://image.tmdb.org/t/p/w300${poster_path}`} alt="title of film" />
  <h3>
 {original_title}<span>({data })</span>
@@ -89,7 +87,7 @@ return (
   Additional information
 </p>
 
-<ul>
+<ul className="navDet">
   <li>
   <Link to ="cast"> Cast </Link>
 
@@ -104,8 +102,7 @@ return (
 </ul>
 
 <Outlet />
-
-</div>
+</main>
 
 )
 }

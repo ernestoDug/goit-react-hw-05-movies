@@ -1,9 +1,5 @@
-// import { useParams } from "react-router-dom";
-// import { fetcher } from '../helpers/fetcher.js';
-// import { Outlet } from "react-router-dom"
-// import Details from "components/Details/Details"
+import { Link } from "react-router-dom"
 import Searchbar from "components/Searchbar/Searchbar"
-
 
 const Movies = () =>{
 
@@ -12,9 +8,12 @@ const Movies = () =>{
 
     return (
     <main>
-     <span>
+      <Link to= '/'>
+      <button className="btnBackHome"> go to 🏰 </button>
+      </Link>
+     <p>
 📺
-</span>
+</p>
 <Searchbar/>
 
 {/* <Outlet/> */}

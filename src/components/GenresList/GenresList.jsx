@@ -1,13 +1,11 @@
- 
+
  export const GenreList = ({ name, id }) => {
-    // const [showMod, setShowMod] = useState(false);
-    // const [modalURL, setModalURL] = useState('');
-     
+
   
     return (
       <>
       
-        <li key={id} >
+        <li key={id} className='ganreListITM'>
        {name}
         </li>
     

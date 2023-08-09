@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
-import { fetchenr } from "helpers/fetchenr";
+import { fetchecr } from "helpers/fetchecr";
 import { useEffect, useState } from "react";
+import css from './actor.module.css'
 
 export const Cast = () => {
   const [responseMovsCast, setResponseMovsCast] = useState([]);
@@ -8,7 +9,7 @@ export const Cast = () => {
 
   
   useEffect(() => {
-    fetchenr(id)
+    fetchecr(id)
   .then(resp => {
     setResponseMovsCast(resp.data.cast);
             console.log(resp.data.cast, 77777);
@@ -31,12 +32,12 @@ return (
 
 
 <section>
-  <ul className="listActor">
+  <ul className={css.listActor}>
 {responseMovsCast.map(({character, id, profile_path, name}) => (
 
-       <li key = {id}> 
-       <div className="actor"> 
-<img src= {`https://image.tmdb.org/t/p/w200${profile_path}`} alt="actor" />
+       <li className={css.actorItm} key = {id}> 
+       <div className={css.actorWr}> 
+<img className={css.actorImg} src= {`https://image.tmdb.org/t/p/w200${profile_path}`} alt="actor" />
       {name}
         <span>
         {character}

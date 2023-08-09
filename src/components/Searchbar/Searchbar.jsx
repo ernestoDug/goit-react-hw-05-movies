@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 // npm i react-toastify
 import 'react-toastify/dist/ReactToastify.css';
 import css from './Searchbar.module.css';
-import { fetcherr } from 'helpers/fetcherr'; 
+import { fetchenr } from 'helpers/fetchenr'; 
  
 // import { useContext } from 'react';
 
@@ -17,7 +17,7 @@ const Searchbar = () => {
 
 
   const [findMovie, setFindMovie] = useState('');
-  const [responseMovs, setResponseMovs] = useState(''); 
+  const [responseMovsName, setResponseMovsName] = useState(''); 
 
   const q = useParams();
   console.log(q, "*********************")
@@ -31,17 +31,17 @@ const Searchbar = () => {
   // відпрвник
   const submiter = event => {
     event.preventDefault();
-    fetcherr(findMovie)
+    fetchenr(findMovie)
           // очищувач форми
     setFindMovie('');
   };
 
 // ***********************
 useEffect(() => {
-  fetcherr(findMovie)
+  fetchenr(findMovie)
   .then(resp => {
-    setResponseMovs(resp.data.results);
-          console.log(resp.data.results, "fscewcwecc")
+    setResponseMovsName(resp.data.results);
+          console.log(resp.data.results, "1515151")
  })
 .catch(error => {
 // toast.warn(`🐒Отакої! ${error} 🐒`);

@@ -1,0 +1,25 @@
+
+.actorWr
+{
+  display:  flex;
+  flex-direction: column;
+  width: 250px;
+  font-size: 30px;
+}
+.listActor
+{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.actorItm
+{
+    margin: 15px;
+    box-shadow: inset 0 0 7px 4px rgba(255,255,255,.5);
+    border-radius: 8px;
+    text-align: center;
+}
+.actorImg {
+    border-radius: 8px;
+}
