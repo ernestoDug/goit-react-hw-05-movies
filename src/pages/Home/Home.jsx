@@ -11,6 +11,7 @@ const Home = () => {
           .then(resp => {
            setResponseMovs(resp.data.results);
                        console.log(resp.data.results, 6555555555555555)
+                     
               })
           .catch(error => {
             // toast.warn(`🐒Отакої! ${error} 🐒`);
@@ -20,7 +21,7 @@ const Home = () => {
             // setLoading(false);
           });
       }, []);
- 
+      console.log(respMovs)
     return (
         <main>
 🏰 <h1 className='h1'> 🧛‍♂️Welcome to the palace of trending movies</h1>
