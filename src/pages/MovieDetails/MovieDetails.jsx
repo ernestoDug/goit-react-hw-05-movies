@@ -1,8 +1,8 @@
 
 import { useParams } from "react-router-dom";
-import { fetcherrr } from "helpers/fetcherrr";
+import { fetchedr } from "helpers/fetchedr";
 import { useEffect, useState } from "react";
-// import { GenreList } from "components/GenresList/GenresList";
+import { GenreList } from "components/GenresList/GenresList";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 
@@ -10,20 +10,31 @@ import { Outlet } from "react-router-dom";
 const MovieDetails = () => 
 {
   const [responseMovsId, setResponseMovsId] = useState('');
+  const [genres, setGenres] = useState([]);
+  const [data, setData] = useState('');
+
+
   const  {id}  = useParams();
 
 
-  const {original_title, release_date, vote_average, overview, genres, poster_path,
+  const {original_title, vote_average, overview,  poster_path,
 
    } = responseMovsId
 
   // const pp = (responseMovsId.release_date.substr(0, 4))
   
   useEffect(() => {
-    fetcherrr(id)
+    fetchedr(id)
   .then(resp => {
+    console.log(resp.data, 45);
+    console.dir(poster_path, 78)
     setResponseMovsId(resp.data);
-            console.log(resp.data, 45);
+    setGenres(resp.data.genres)
+    setData(resp.data.release_date.slice(0,4));
+
+
+
+
 
    })
   .catch(error => {
@@ -34,21 +45,21 @@ const MovieDetails = () =>
   // setLoading(false);
 }
 );
-}, [id]);
+}, [id, poster_path]);
   
 
 
-console.log(genres, 111111111111111111111111)
-console.dir(poster_path, 111111111111111111111111)
+console.log(typeof(genres), "71")
+console.dir(poster_path, "78")
 
 return (
-<div>
-<img src={poster_path} alt="title of film" />
+<div className="contMD">
+<img src= {`https://image.tmdb.org/t/p/w300${poster_path}`} alt="title of film" />
  <h3>
-{original_title} <span>{release_date }</span>
+{original_title}<span>({data })</span>
  </h3>
  <p>
- User Score: {vote_average*10}%
+ User Score: {Math.ceil(vote_average*10)}%
  </p>
  <h4>
  Overview 
@@ -62,14 +73,14 @@ return (
                          Genres
                    </h5>
 
-                   <ul>
-                   
-      {/* {genres.map(({name, id}) => (
+                   <ul className="listGanreItem">
+                  
+      {genres.map(({name, id}) => (
         <GenreList
         name={name}
-        id = {id}
+       key = {id}
         />
-              ))}  */}
+              ))} 
 
     </ul>
 

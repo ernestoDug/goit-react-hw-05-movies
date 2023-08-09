@@ -53,3 +53,22 @@ body {
 {
   list-style: none;
 }
+
+.actor
+{
+  display:  flex;
+  flex-direction: column;
+  width: 500px;
+  font-size: 30px;
+}
+.listActor
+{
+  list-style: none;
+}
+
+.contMD
+{
+  font-size: 25px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}

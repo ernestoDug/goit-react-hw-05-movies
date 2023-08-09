@@ -3,15 +3,15 @@ import { fetchenr } from "helpers/fetchenr";
 import { useEffect, useState } from "react";
 
 export const Cast = () => {
-  const [responseMovsCast, setResponseMovsCast] = useState('');
+  const [responseMovsCast, setResponseMovsCast] = useState([]);
   const  {id}  = useParams();
 
   
   useEffect(() => {
     fetchenr(id)
   .then(resp => {
-    setResponseMovsCast(resp.data);
-            console.log(resp.data, 7777777777777777777777777777777777);
+    setResponseMovsCast(resp.data.cast);
+            console.log(resp.data.cast, 77777);
 
 
    })
@@ -31,14 +31,24 @@ return (
 
 
 <section>
-<h2>Our mission</h2>
-<p>
- 
-</p>
-<p>
-  as vel, tenetur maxime
-  pariatur? Molestiae libero cum quidem.
-</p>
+  <ul className="listActor">
+{responseMovsCast.map(({character, id, profile_path, name}) => (
+
+       <li key = {id}> 
+       <div className="actor"> 
+<img src= {`https://image.tmdb.org/t/p/w200${profile_path}`} alt="actor" />
+      {name}
+        <span>
+        {character}
+          </span>  
+       </div>
+       </li>
+))}
+        </ul>
+
+
+
+
 </section>
 )
 
