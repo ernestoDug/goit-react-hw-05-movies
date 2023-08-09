@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom"
 import Searchbar from "components/Searchbar/Searchbar"
+import { useState } from "react"
+import MovieList from "components/MoveList/MovieList"
 
 const Movies = () =>{
 
+  const [srchFilm, setSrchFilm] = useState([])
     // const { id } = useParams();
-    // const movies = fetcher(id);
-
+console.log(srchFilm, "mmm")
     return (
     <main>
       <Link to= '/'>
@@ -14,7 +16,29 @@ const Movies = () =>{
      <p>
 📺
 </p>
-<Searchbar/>
+<Searchbar
+setSrchFilm = {setSrchFilm}
+/>
+
+
+<ul className="moviesList">
+                  
+                  {srchFilm.map(({original_title, id}) => (
+                    <Link  
+                    key={id}
+                    // to={`movies/${id}/query=${search}`}
+                    >     
+                    <MovieList
+                    title={original_title}
+                                     />
+                     </Link> 
+                          ))} 
+            
+                </ul>
+
+
+
+
 
 {/* <Outlet/> */}
   </main>

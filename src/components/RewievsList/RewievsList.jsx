@@ -5,7 +5,7 @@ return (
     
     <li className="rewieItm"  > 
     <h4 className="rewieName" >
-   {author }
+    Author: {author }
     </h4>
        <p>{content}</p>
                             

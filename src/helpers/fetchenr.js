@@ -6,17 +6,12 @@ const BASE_URL = 'https://api.themoviedb.org';
 
 export const fetchenr = (search) => {
   const response= axios.get(
-`${BASE_URL}/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1&api_
+`${BASE_URL}/3/search/movie?query='${search}'&include_adult=false&language=en-US&page=1&api_
 key=${MY_KEY}`,{
 
-      // params: {
-      //   image_type: 'photo',
-      //   orientation: 'horizontal',
-      //   safesearch: 'true',
-      //   per_page: 12,
-      // },
-    }
-  );
+}
+);
+console.log(response, "***");
 
   return response
 };

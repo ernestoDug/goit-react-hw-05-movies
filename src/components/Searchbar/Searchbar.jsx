@@ -1,26 +1,20 @@
 // import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 // import { toast } from 'react-toastify';
 // npm i react-toastify
 import 'react-toastify/dist/ReactToastify.css';
 import css from './Searchbar.module.css';
 import { fetchenr } from 'helpers/fetchenr'; 
  
-// import { useContext } from 'react';
 
-// import { Context } from 'components/App';
-
-// *******************************************************************
-const Searchbar = () => {
-  // const context = useContext(Context);
+const Searchbar = ({setSrchFilm}) => {
 
 
   const [findMovie, setFindMovie] = useState('');
-  const [responseMovsName, setResponseMovsName] = useState(''); 
+  // const [responseMovsName, setResponseMovsName] = useState(''); 
 
-  const q = useParams();
-  console.log(q, "*********************")
+  // const {search} = useParams();
   
   
   // шукач
@@ -31,17 +25,21 @@ const Searchbar = () => {
   // відпрвник
   const submiter = event => {
     event.preventDefault();
-    fetchenr(findMovie)
+    
+    fetchenr()
+    // setFindMovie('')
           // очищувач форми
-    setFindMovie('');
   };
 
 // ***********************
 useEffect(() => {
   fetchenr(findMovie)
   .then(resp => {
-    setResponseMovsName(resp.data.results);
-          console.log(resp.data.results, "1515151")
+    // setResponseMovsName(resp.data);
+    setSrchFilm(resp.data.results);
+    console.log(resp.data.results
+      , "vvv")
+   
  })
 .catch(error => {
 // toast.warn(`🐒Отакої! ${error} 🐒`);
@@ -50,8 +48,9 @@ useEffect(() => {
 .finally(() => {
 // setLoading(false);
 });
-}, [findMovie]);
+}, [findMovie, setSrchFilm]);
 
+console.log(findMovie, "************фь*********")
 
 
 
