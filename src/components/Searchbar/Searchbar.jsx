@@ -13,28 +13,29 @@ import { useSearchParams } from "react-router-dom";
 const Searchbar = ({setSrchFilm}) => {
 
 
-  // const [findMovie, setFindMovie] = useState('');
-// заміна в рядку
-  const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get("query") ?? "";
-// *****************************************************************
-  // const {search} = useParams();
+// заміна в рядку запита
+  const [searchMovies, setSearchMovies] = useSearchParams();
+  const query = searchMovies.get("query") ?? "";
   
-  
-  // шукач
-  // const changer = event => {
-  //   // console.log(findMovie);
-  //    setFindMovie(event.target.value.toLowerCase());
 
+  // поки не розумію як використати
+  // **********************************
+  // const updateQueryString = (name) => {
+  //   const nextMovies = query !== "" ? { query } : {};
+  //   setSearchMovies(nextMovies);
   // };
+  
+
   // відпрвник
   const submiter = event => {
     event.preventDefault();
-    setSrchFilm(query)
+    setSrchFilm(query);
+    // *********************
+    // event.target.reset()/
+    // setSearchMovies("");
     
-    // fetchenr()
-    // setFindMovie('');
     // очищувач форми
+    // input.reset();
   };
   
   return (
@@ -42,17 +43,15 @@ const Searchbar = ({setSrchFilm}) => {
       <header className={css.searchbar}>
         <form onSubmit={submiter} className={css.form}>
           <button type="submit" className={css.button}>
-            <span className={css.buttonLab}>Шукати</span>
+            <span className={css.buttonLab}>Search</span>
           </button>
 
           <input
             className={css.input}
             type="text"
-            // autocomplete="off"
-            // autofocus
-            placeholder="Почніть пошук..."
+         placeholder="Start your search..."
             value={query}
-            onChange={e => setSearchParams({ query: e.target.value })}
+            onChange={event => setSearchMovies({ query: event.target.value })}
           />
         </form>
       </header>

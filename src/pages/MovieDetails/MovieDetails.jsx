@@ -3,7 +3,8 @@ import { fetchedr } from 'helpers/fetchedr';
 import { useEffect, useState } from 'react';
 import { GenreList } from 'components/GenresList/GenresList';
 import { Link } from 'react-router-dom';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
+import { BackLink } from 'components/BackLink/BackLink';
 
 const MovieDetails = () => {
   const [responseMovsId, setResponseMovsId] = useState('');
@@ -15,7 +16,11 @@ const MovieDetails = () => {
   const { original_title, vote_average, overview, poster_path } =
     responseMovsId;
 
-  // const pp = (responseMovsId.release_date.substr(0, 4))
+
+    // для поверення
+      const location = useLocation();
+      const backLinkHref = location.state?.from ?? "/";
+
 
   useEffect(() => {
     fetchedr(id)
@@ -35,15 +40,17 @@ const MovieDetails = () => {
       });
   }, [id, poster_path]);
 
-  console.log(typeof genres, '71');
-  console.dir(poster_path, '78');
+  // console.log(typeof genres, '71');
+  // console.dir(poster_path, '78');
 
   return (
     <main className="contMD">
       <div className="wrapBtnImgMovDet">
-        <Link to="/">
+        {/* <Link to="/">
           <button className="btnBackHome"> go to 🏰 </button>
-        </Link>
+        </Link> */}
+              <BackLink className="btnBackHome" to={backLinkHref}>Go back 🏄 </BackLink>
+
       </div>
 
       <img
