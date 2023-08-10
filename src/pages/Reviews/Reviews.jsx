@@ -1,6 +1,6 @@
 // import PropTypes from 'prop-types';
 
-import css from 'components/Reviews/Reviews.module.css';
+import css from 'pages/Reviews/Reviews.module.css';
 
 import { useParams } from 'react-router-dom';
 import { fetcherrw } from 'helpers/fetcherrw';

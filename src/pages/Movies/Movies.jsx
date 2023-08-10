@@ -1,28 +1,34 @@
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import Searchbar from 'components/Searchbar/Searchbar';
 import { useState, useEffect } from 'react';
 import MovieList from 'components/MoveList/MovieList';
 import { fetchenr } from 'helpers/fetchenr';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import RotatingGallery from 'components/Loader/Loader';
+import RotatingGallery from 'components/Loader/Loader';
+
+
+
 
 const Movies = () => {
   const [srchFilm, setSrchFilm] = useState('');
   const [responseMovsName, setResponseMovsName] = useState([]);
-  // const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   // console.log(srchFilm, "mmm")
 
   // ***********************
   useEffect(() => {
+    setLoading(true);
     if (!srchFilm) {
-      // setLoading(true);
       return;
     }
+    if(srchFilm.length !==0 ) {  
     fetchenr(srchFilm)
       .then(resp => {
         setResponseMovsName(resp.data.results);
+        // обнуляція
+        setSrchFilm('');
         // console.log(resp.data.results
         //   , "vvv")
       })
@@ -31,10 +37,10 @@ const Movies = () => {
       })
       // лодер -
       .finally(() => {
-        // setLoading(false);
+        setLoading(false);
       });
-    // return()=> (responseMovsName)
-  }, [responseMovsName, srchFilm]);
+    return()=> (responseMovsName);
+}}, [responseMovsName, srchFilm]);
 
   // console.log(findMovie, "************фь*********")
 
@@ -45,9 +51,9 @@ const Movies = () => {
       </Link>
       <p>📺</p>
       <Searchbar setSrchFilm={setSrchFilm} />
-      {/* {loading !== true ? (<RotatingGallery/>) :  */}
+      {loading !== true ? (<RotatingGallery/>) : 
 
-      {/* // ( */}
+       ( 
       <ul className="moviesList">
         {responseMovsName.map(({ original_title, id }) => (
           <Link key={id} to={`/movies/${id}`}>
@@ -55,9 +61,9 @@ const Movies = () => {
           </Link>
         ))}
       </ul>
-      {/* )} */}
+     )}
 
-      {/* <Outlet/> */}
+      <Outlet/>
     </main>
   );
 };

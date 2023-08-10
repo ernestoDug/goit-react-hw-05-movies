@@ -7,8 +7,8 @@ import Movies from 'pages/Movies/Movies';
 import MovieDetails from '../pages/MovieDetails/MovieDetails';
 import Layout from './Layout/Layout';
 // import NotFound from 'pages/notFound';
-import Reviews from './Reviews/Reviews';
-import { Cast } from 'components/Cast/Cast';
+import Reviews from '../pages/Reviews/Reviews';
+import { Cast } from 'pages/Cast/Cast';
  
 
 const App = () => {

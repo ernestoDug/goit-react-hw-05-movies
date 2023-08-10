@@ -1,33 +1,39 @@
 // import PropTypes from 'prop-types';
-import { useState, } from 'react';
+// import { useState, } from 'react';
 // import { useParams } from 'react-router-dom';
 // import { toast } from 'react-toastify';
 // npm i react-toastify
 import 'react-toastify/dist/ReactToastify.css';
 import css from './Searchbar.module.css';
+
+import { useSearchParams } from "react-router-dom";
+
  
 
 const Searchbar = ({setSrchFilm}) => {
 
 
-  const [findMovie, setFindMovie] = useState('');
-
+  // const [findMovie, setFindMovie] = useState('');
+// заміна в рядку
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("query") ?? "";
+// *****************************************************************
   // const {search} = useParams();
   
   
   // шукач
-  const changer = event => {
-    // console.log(findMovie);
-     setFindMovie(event.target.value.toLowerCase());
+  // const changer = event => {
+  //   // console.log(findMovie);
+  //    setFindMovie(event.target.value.toLowerCase());
 
-  };
+  // };
   // відпрвник
   const submiter = event => {
     event.preventDefault();
-    setSrchFilm(findMovie)
+    setSrchFilm(query)
     
     // fetchenr()
-    setFindMovie('')
+    // setFindMovie('');
     // очищувач форми
   };
   
@@ -45,8 +51,8 @@ const Searchbar = ({setSrchFilm}) => {
             // autocomplete="off"
             // autofocus
             placeholder="Почніть пошук..."
-            value={findMovie}
-            onChange={changer}
+            value={query}
+            onChange={e => setSearchParams({ query: e.target.value })}
           />
         </form>
       </header>
