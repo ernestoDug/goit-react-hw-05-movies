@@ -14,7 +14,6 @@ code {
     monospace;
 }
 
-
 html {
   box-sizing: border-box;
   width: 100vw;
@@ -31,8 +30,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-  background: linear-gradient(45deg, #fff1eb,#aee8db);
-  ;
+  background: linear-gradient(45deg, #fff1eb, #aee8db);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -44,81 +42,86 @@ body {
   padding: 0 16px;
 }
 
-.h1
-{
-  color: #56b090
+.h1 {
+  color: #56b090;
 }
 
-.listGanreItem
-{
+.listGanreItem {
   list-style: none;
   display: flex;
   justify-content: space-around;
-  }
+}
 
-
-
-.contMD
-{
+.contMD {
   font-size: 25px;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 
-.navDet
-{
+/* ********************************************************* */
+.wrapBtnImgMovDet {
+  display: flex;
+   flex-direction: column;
+}
+
+.navDet {
   list-style: none;
+  display: flex;
+  justify-content: space-between;
 }
 
-.btnBackHome
+.btnBackHome,
+.castRewie
+
+
 {
-     position: relative;
-    box-shadow: 
-        1px 1px #53eaae, 
-        2px 2px #53eac4, 
-        3px 3px #53eaea;
-        background-color: #22ae8b;
-        color: #fff1eb;
-        outline: none;
-        border: none;
-    transition: all 0.1s ease-in;
-    padding: 5px 10px;
-    border-radius: 20px/60px;
+  position: relative;
+  box-shadow: 1px 1px #53eaae, 2px 2px #53eac4, 3px 3px #53eaea;
+  background-color: #22ae8b;
+  color: #fff1eb;
+  outline: none;
+  border: none;
+  transition: all 0.1s ease-in;
+  padding: 5px 10px;
+  border-radius: 20px/60px;
+  margin-bottom: 10px;
 }
- 
-.btnBackHome:active {
-    box-shadow: none;
-    top: 3px;
-    left: 3px;
+
+.btnBackHome:active,
+.castRewie:active
+
+ {
+  box-shadow: none;
+  top: 3px;
+  left: 3px;
 }
-.btnBackHome:hover
-{
+.btnBackHome:hover,
+.castRewieItm:hover {
   background-color: #88d122;
   transform: rotate(-10deg);
   color: #320960;
 }
+.castRewie:hover{
+  background-color: #88d122;
+  color: #320960;
 
-.rewieList
-{
+}
+
+
+/* *************************************** */
+.rewieList {
   list-style: none;
 }
 
-.rewieName
-{
+.rewieName {
   color: #0f5e4a;
 }
 
-.rewieItm
-{
+.rewieItm {
   border-radius: 4px;
-  box-shadow: 
-      inset 0 1px 0 rgba(255,255,255,0.5), 
-      0 2px 2px rgba(0,0,0,0.3), 
-      0 0 4px 1px rgba(0,0,0,0.2);
-      padding: 5px 20px;
-      border-radius: 20px/60px;
-      margin-bottom: 10px;
-      
-      
-       }
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 2px 2px rgba(0, 0, 0, 0.3), 0 0 4px 1px rgba(0, 0, 0, 0.2);
+  padding: 5px 20px;
+  border-radius: 20px/60px;
+  margin-bottom: 10px;
+}

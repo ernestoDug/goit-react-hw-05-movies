@@ -11,7 +11,7 @@ key=${MY_KEY}`,{
 
 }
 );
-console.log(response, "***");
+// console.log(response, "***");
 
   return response
 };
