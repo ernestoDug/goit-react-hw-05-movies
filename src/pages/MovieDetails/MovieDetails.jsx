@@ -5,6 +5,7 @@ import { GenreList } from 'components/GenresList/GenresList';
 import { Link } from 'react-router-dom';
 import { Outlet, useLocation } from 'react-router-dom';
 import { BackLink } from 'components/BackLink/BackLink';
+import { Suspense } from 'react';
 
 const MovieDetails = () => {
   const [responseMovsId, setResponseMovsId] = useState('');
@@ -19,14 +20,14 @@ const MovieDetails = () => {
 
     // для поверення
       const location = useLocation();
-      const backLinkHref = location.state?.from ?? "/";
+      const back = location.state?.from ?? "/";
 
 
   useEffect(() => {
     fetchedr(id)
       .then(resp => {
-        console.log(resp.data, 45);
-        console.dir(poster_path, 78);
+        // console.log(resp.data, 45);
+        // console.dir(poster_path, 78);
         setResponseMovsId(resp.data);
         setGenres(resp.data.genres);
         setData(resp.data.release_date.slice(0, 4));
@@ -49,7 +50,7 @@ const MovieDetails = () => {
         {/* <Link to="/">
           <button className="btnBackHome"> go to 🏰 </button>
         </Link> */}
-              <BackLink className="btnBackHome" to={backLinkHref}>Go back 🏄 </BackLink>
+              <BackLink className="btnBackHome" to={back} >Go back 🏄 </BackLink>
 
       </div>
 
@@ -90,8 +91,10 @@ const MovieDetails = () => {
           </Link>
         </li>
       </ul>
-
+      <Suspense fallback={<div>Loading...</div>}>
       <Outlet />
+</Suspense>
+
     </main>
   );
 };

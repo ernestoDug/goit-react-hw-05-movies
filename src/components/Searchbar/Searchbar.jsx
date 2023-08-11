@@ -6,6 +6,7 @@
 import 'react-toastify/dist/ReactToastify.css';
 import css from './Searchbar.module.css';
 
+
 import { useSearchParams } from "react-router-dom";
 
  
@@ -15,8 +16,13 @@ const Searchbar = ({setSrchFilm}) => {
 
 // заміна в рядку запита
   const [searchMovies, setSearchMovies] = useSearchParams();
-  const query = searchMovies.get("query") ?? "";
+   const query = searchMovies.get("query") ?? "";
+  // -------------------------------------------------------
   
+
+// const pp = value 
+
+
 
   // поки не розумію як використати
   // **********************************
@@ -29,14 +35,14 @@ const Searchbar = ({setSrchFilm}) => {
   // відпрвник
   const submiter = event => {
     event.preventDefault();
+    // передатчик в мувис
     setSrchFilm(query);
     // *********************
-    // event.target.reset()/
-    // setSearchMovies("");
-    
     // очищувач форми
-    // input.reset();
-  };
+    // очищувач форми
+    // setSearchMovies('')
+      
+ };
   
   return (
     <>
@@ -50,7 +56,7 @@ const Searchbar = ({setSrchFilm}) => {
             className={css.input}
             type="text"
          placeholder="Start your search..."
-            value={query}
+            value={ query}
             onChange={event => setSearchMovies({ query: event.target.value })}
           />
         </form>

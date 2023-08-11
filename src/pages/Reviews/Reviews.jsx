@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 
 import { RewievsList } from 'components/RewievsList/RewievsList';
 
-export const Reviews = () => {
+ const Reviews = () => {
   const [responseMovsRew, setResponseMovsRew] = useState([]);
   const { id } = useParams();
 

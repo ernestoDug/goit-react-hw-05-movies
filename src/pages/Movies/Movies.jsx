@@ -5,23 +5,29 @@ import MovieList from 'components/MoveList/MovieList';
 import { fetchenr } from 'helpers/fetchenr';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import RotatingGallery from 'components/Loader/Loader';
-
-
-
+// import { useMemo } from "react";
+import { Suspense } from 'react';
+import { UsecustomCont } from 'components/Context/Context';
 
 const Movies = () => {
-  const [srchFilm, setSrchFilm] = useState('');
-  const [responseMovsName, setResponseMovsName] = useState([]);
-  const [loading, setLoading] = useState(false);
+// const context = UsecustomCont()
+
+  const [srchFilm, setSrchFilm] = useState(''); 
+
+
+  const {responseMovsName, setResponseMovsName} = UsecustomCont();
 // для поверення
   const location = useLocation();
-
-  // console.log(srchFilm, "mmm")
-
   // ***********************
+  // const movsMemo = useMemo(
+  //   () => Object.fromEntries([...responseMovsName]),
+  //   [responseMovsName]
+  // );
+  // const {query} = params;
+
+  // зберігаємо список за ім'ьям
+
   useEffect(() => {
-    setLoading(true);
     if (!srchFilm) {
       return;
     }
@@ -29,43 +35,49 @@ const Movies = () => {
     fetchenr(srchFilm)
       .then(resp => {
         setResponseMovsName(resp.data.results);
-        // обнуляція
-        setSrchFilm('');
+                // обнуляція
+ 
         // console.log(resp.data.results
         //   , "vvv")
+        
+
       })
       .catch(error => {
         toast.warn(`🐒Sorry ${error} 🐒`);
       })
       // лодер -
       .finally(() => {
-        setLoading(false);
-      });
-    // return()=> (responseMovsName);
-}}, [responseMovsName, srchFilm]);
+      }
+      
+      );
+      
+}
 
-  // console.log(findMovie, "************фь*********")
+}, [setResponseMovsName, srchFilm]);
+
+
+
+  
 
   return (
     <main>
-      {/* <Link to="/"> */}
-        {/* <button className="btnBackHome"> Go to 🏰 </button> */}
-      {/* </Link> */}
+  
       <p>📺</p>
       <Searchbar setSrchFilm={setSrchFilm} />
-      {loading !== true ? (<RotatingGallery/>) : 
-
-       ( 
+     
       <ul className="moviesList">
         {responseMovsName.map(({ original_title, id }) => (
           <Link key={id} to={`/movies/${id}`} state={{ from: location }}>
-            <MovieList title={original_title} />
+                        <MovieList title={original_title} />
           </Link>
         ))}
       </ul>
-     )}
 
+      <Suspense fallback={<div>Loading...</div>}>
       <Outlet/>
+
+</Suspense>
+
     </main>
   );
 };

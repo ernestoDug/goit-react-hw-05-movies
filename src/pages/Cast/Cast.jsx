@@ -3,7 +3,7 @@ import { fetchecr } from "helpers/fetchecr";
 import { useEffect, useState } from "react";
 import css from './actor.module.css'
 
-export const Cast = () => {
+ const Cast = () => {
   const [responseMovsCast, setResponseMovsCast] = useState([]);
   const  {id}  = useParams();
 
@@ -54,3 +54,4 @@ return (
 )
 
 }
+export default Cast
