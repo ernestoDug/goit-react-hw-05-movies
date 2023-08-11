@@ -1,18 +1,16 @@
-// import PropTypes from 'prop-types';
-import styled from "styled-components";
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 import css from './Headers.module.css';
-import {  NavLink } from 'react-router-dom';
+
 const StyledLink = styled(NavLink)`
   color: black;
 
   &.active {
- background-color: #009A63;
-;
+    background-color: #009a63;
   }
-`
-
-
+`;
 
 const Header = ({ children }) => {
   return (
@@ -21,14 +19,14 @@ const Header = ({ children }) => {
       <nav className="menuItem">
         <StyledLink className={css.Link} to="/">
           {' '}
-          Home 🏰 {' '}
+          Home 🏰{' '}
         </StyledLink>{' '}
       </nav>
       <nav>
         {' '}
-        <StyledLink  className={css.Link} to="/movies">
+        <StyledLink className={css.Link} to="/movies">
           {' '}
-          Movies 📺 {' '}
+          Movies 📺{' '}
         </StyledLink>{' '}
       </nav>
     </div>
@@ -36,8 +34,8 @@ const Header = ({ children }) => {
 };
 
 // проптайпи
-// Button.propTypes = {
-//   givMeMore: PropTypes.func.isRequired,
-// };
+StyledLink.propTypes = {
+  children: PropTypes.node,
+};
 
 export default Header;

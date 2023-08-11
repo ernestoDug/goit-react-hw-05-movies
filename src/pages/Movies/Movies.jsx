@@ -5,27 +5,18 @@ import MovieList from 'components/MoveList/MovieList';
 import { fetchenr } from 'helpers/fetchenr';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import { useMemo } from "react";
 import { Suspense } from 'react';
 import { UsecustomCont } from 'components/Context/Context';
 
 const Movies = () => {
-// const context = UsecustomCont()
-
+const context = UsecustomCont();
+const {responseMovsName, setResponseMovsName} = UsecustomCont();
   const [srchFilm, setSrchFilm] = useState(''); 
 
 
-  const {responseMovsName, setResponseMovsName} = UsecustomCont();
 // для поверення
   const location = useLocation();
-  // ***********************
-  // const movsMemo = useMemo(
-  //   () => Object.fromEntries([...responseMovsName]),
-  //   [responseMovsName]
-  // );
-  // const {query} = params;
 
-  // зберігаємо список за ім'ьям
 
   useEffect(() => {
     if (!srchFilm) {
@@ -34,7 +25,7 @@ const Movies = () => {
     if(srchFilm.length !==0 ) {  
     fetchenr(srchFilm)
       .then(resp => {
-        setResponseMovsName(resp.data.results);
+        context.setResponseMovsName(resp.data.results);
                 // обнуляція
  
         // console.log(resp.data.results

@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { fetchedr } from 'helpers/fetchedr';
 import { useEffect, useState } from 'react';
-import { GenreList } from 'components/GenresList/GenresList';
+import { UniversList } from 'components/UniversList/UniversList';
 import { Link } from 'react-router-dom';
 import { Outlet, useLocation } from 'react-router-dom';
 import { BackLink } from 'components/BackLink/BackLink';
@@ -72,7 +72,7 @@ const MovieDetails = () => {
 
       <ul className="listGanreItem">
         {genres.map(({ name, id }) => (
-          <GenreList name={name} key={id} />
+          <UniversList name={name} key={id} />
         ))}
       </ul>
 

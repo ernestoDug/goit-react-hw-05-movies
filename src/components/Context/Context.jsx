@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react';
+import PropTypes from 'prop-types';
 
+// зберігання стану пошуку за ім'ям в контексті
 const MovsNameCont = React.createContext();
 
 export const UsecustomCont = () => {
@@ -14,11 +16,15 @@ const Context = ({ children }) => {
         responseMovsName: responseMovsName,
         setResponseMovsName: setResponseMovsName,
       }}
-      >
-        {children}
-
+    >
+      {children}
     </MovsNameCont.Provider>
   );
 };
 
-export default Context
+// проптайпи
+UsecustomCont.propTypes = {
+  children: PropTypes.node,
+};
+
+export default Context;
