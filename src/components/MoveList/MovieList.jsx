@@ -14,7 +14,8 @@ const MovieList = ({ title }) => {
 
 // протайпи
 MovieList.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  // isRequired
 };
 
 export default MovieList;

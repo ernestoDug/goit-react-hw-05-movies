@@ -1,17 +1,29 @@
-import { Link, Outlet, useLocation } from 'react-router-dom';
-import Searchbar from 'components/Searchbar/Searchbar';
+import { Link, Outlet, useLocation, useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import MovieList from 'components/MoveList/MovieList';
 import { fetchenr } from 'helpers/fetchenr';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { Suspense } from 'react';
 import { UsecustomCont } from 'components/Context/Context';
+import Searchbar from 'components/Searchbar/Searchbar';
+import MovieList from 'components/MoveList/MovieList';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Movies = () => {
-const context = UsecustomCont();
+// const context = UsecustomCont();
 const {responseMovsName, setResponseMovsName} = UsecustomCont();
-  const [srchFilm, setSrchFilm] = useState(''); 
+
+  const [searchMovies, setSearchMovies] = useSearchParams();
+
+  const query = searchMovies.get('query') ?? '';
+
+
+
+
+ const updateQueryString = (query) => { 
+    const nextMovies = query !== "" ? { query } : {}; 
+    setSearchMovies(nextMovies); 
+  };
+
 
 
 // для поверення
@@ -19,17 +31,16 @@ const {responseMovsName, setResponseMovsName} = UsecustomCont();
 
 
   useEffect(() => {
-    if (!srchFilm) {
+    if (!searchMovies) {
       return;
     }
-    if(srchFilm.length !==0 ) {  
-    fetchenr(srchFilm)
+    // if(srchFilm.length !==0 ) {  
+    fetchenr(searchMovies)
       .then(resp => {
-        context.setResponseMovsName(resp.data.results);
+        setResponseMovsName(resp.data.results);
                 // обнуляція
  
-        // console.log(resp.data.results
-        //   , "vvv")
+   
         
 
       })
@@ -38,13 +49,13 @@ const {responseMovsName, setResponseMovsName} = UsecustomCont();
       })
       // лодер -
       .finally(() => {
+        return searchMovies
       }
       
       );
       
-}
 
-}, [setResponseMovsName, srchFilm]);
+}, [searchMovies, setResponseMovsName]);
 
 
 
@@ -54,7 +65,11 @@ const {responseMovsName, setResponseMovsName} = UsecustomCont();
     <main>
   
       <p>📺</p>
-      <Searchbar setSrchFilm={setSrchFilm} />
+      <Searchbar updateQueryString={updateQueryString} 
+      setSearchMovies = {setSearchMovies}
+      query = {query}
+      
+      />
      
       <ul className="moviesList">
         {responseMovsName.map(({ original_title, id }) => (
