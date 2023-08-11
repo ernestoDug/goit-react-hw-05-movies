@@ -21,14 +21,14 @@ const Header = ({ children }) => {
       <nav className="menuItem">
         <StyledLink className={css.Link} to="/">
           {' '}
-          Home{' '}
+          Home 🏰 {' '}
         </StyledLink>{' '}
       </nav>
       <nav>
         {' '}
         <StyledLink  className={css.Link} to="/movies">
           {' '}
-          Movies{' '}
+          Movies 📺 {' '}
         </StyledLink>{' '}
       </nav>
     </div>

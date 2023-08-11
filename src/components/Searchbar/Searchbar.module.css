@@ -61,19 +61,12 @@
     cursor: pointer;
     outline: none;
     background-color: rgb(73, 194, 136);
+    font-size: 18px;
   }
   
   .button:hover {
     background-color: #9bcd71;
   }
-  .button:hover>.buttonLab
-  {
-    color: rgb(108, 69, 18);
-  }
-  
-  .buttonLab {
-   
-    color: black;
-  }
-  
+ 
+
   

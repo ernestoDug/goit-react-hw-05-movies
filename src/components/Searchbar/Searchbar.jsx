@@ -49,7 +49,7 @@ const Searchbar = ({setSrchFilm}) => {
       <header className={css.searchbar}>
         <form onSubmit={submiter} className={css.form}>
           <button type="submit" className={css.button}>
-            <span className={css.buttonLab}>Search</span>
+            <span className={css.buttonLab}> 🔎</span>
           </button>
 
           <input

@@ -46,11 +46,6 @@ body {
   color: #56b090;
 }
 
-.listGanreItem {
-  list-style: none;
-  display: flex;
-  justify-content: space-around;
-}
 
 .contMD {
   font-size: 25px;
@@ -59,6 +54,10 @@ body {
 
 
 /* ********************************************************* */
+.listGanreItem {
+  list-style: none;
+  justify-content: space-around;
+}
 .wrapBtnImgMovDet {
   display: flex;
    flex-direction: column;
@@ -102,9 +101,16 @@ body {
 .castRewie:hover{
   background-color: #88d122;
   color: #320960;
-
 }
 
+.janrAddWrap
+{
+  box-shadow: 1px 1px #53eaae, 2px 2px #53eac4, 3px 3px #53eaea;
+width: 500px;
+background: linear-gradient(45deg, #fff1eb, #aee8db);
+border-radius: 20px/60px;
+margin-top: 25px;
+}
 
 /* *************************************** */
 .rewieList {
@@ -122,4 +128,15 @@ body {
   padding: 5px 20px;
   border-radius: 20px/60px;
   margin-bottom: 10px;
+}
+
+.detalWrapp
+{
+  display: flex;
+  flex-wrap: wrap;
+}
+.detalTxt
+{
+  width: 600px;
+  margin-left: 20px;
 }
