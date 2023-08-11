@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-
 import css from './Headers.module.css';
 
 const StyledLink = styled(NavLink)`

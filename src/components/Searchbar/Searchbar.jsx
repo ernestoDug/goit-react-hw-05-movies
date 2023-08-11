@@ -1,14 +1,23 @@
 import PropTypes from 'prop-types';
 
 import css from './Searchbar.module.css';
+import { useNavigate } from 'react-router-dom';
 
-const Searchbar = ({ updateQueryString, query, setSearchMovies }) => {
+const Searchbar = ({ updateQueryString, query }) => {
+  const navigate = useNavigate();
+
+  // змінник
+  const changer = event => updateQueryString(event.target.value);
+  
   // відпрвник
   const submiter = event => {
     event.preventDefault();
-    // передатчик в мувис
-    setSearchMovies(query);
+    if (query) {
+      navigate('/moviesList/query', { replace: false });
+    }
   };
+  
+  
 
   return (
     <>
@@ -23,7 +32,7 @@ const Searchbar = ({ updateQueryString, query, setSearchMovies }) => {
             type="text"
             placeholder="Start your search..."
             value={query}
-            onChange={event => updateQueryString(event.target.value)}
+            onChange={changer}
           />
         </form>
       </header>
@@ -34,7 +43,7 @@ const Searchbar = ({ updateQueryString, query, setSearchMovies }) => {
 // проптайпи
 Searchbar.propTypes = {
   updateQueryString: PropTypes.func.isRequired,
-  setSearchMovies: PropTypes.func.isRequired,
+  // setSearchMovies: PropTypes.func.isRequired,
   query: PropTypes.string.isRequired,
 };
 

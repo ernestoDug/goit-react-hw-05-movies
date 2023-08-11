@@ -1,27 +1,29 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { UniversList } from 'components/UniversList/UniversList';
 import { Link } from 'react-router-dom';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Suspense } from 'react';
 import { toast } from 'react-toastify';
-import BarChart from 'components/Loader/Loader';
+import 'react-toastify/dist/ReactToastify.css';
 import { BackLink } from 'components/BackLink/BackLink';
 import { fetchedr } from 'helpers/fetchedr';
-import 'react-toastify/dist/ReactToastify.css';
+import BarChart from 'components/Loader/Loader';
+import { UniversList } from 'components/UniversList/UniversList';
 
 const MovieDetails = () => {
   const [responseMovsId, setResponseMovsId] = useState('');
-
-  const [genres, setGenres] = useState([]);
-  const [data, setData] = useState('');
   let [loading, setLoading] = useState(false);
-
-
+  // для параметра
   const { id } = useParams();
 
-  const { original_title, vote_average, overview, poster_path } =
-    responseMovsId;
+  const {
+    original_title,
+    vote_average,
+    overview,
+    poster_path,
+    genres,
+    release_date,
+  } = responseMovsId;
 
   // для поверення
   const location = useLocation();
@@ -31,13 +33,8 @@ const MovieDetails = () => {
     setLoading(true);
     fetchedr(id)
       .then(resp => {
-        console.log(resp.data, 45);
+        // console.log(resp.data, 45);
         setResponseMovsId(resp.data);
-        setGenres(resp.data.genres);
-        console.log(typeof(resp.data.genres), '71');
-        console.dir(resp.data.genres, '72');
-
-        setData(resp.data.release_date.slice(0, 4));
       })
       .catch(error => {
         toast.warn(`🐒Sorry ${error} 🐒`);
@@ -48,12 +45,11 @@ const MovieDetails = () => {
       });
   }, [id, poster_path]);
 
-
   return (
     <main className="contMD">
-            {loading && <BarChart />}
+      {loading && <BarChart />}
       <div className="wrapBtnImgMovDet">
-           <BackLink className="btnBackHome" to={back}>
+        <BackLink className="btnBackHome" to={back}>
           Go back 🏄{' '}
         </BackLink>
       </div>
@@ -65,7 +61,7 @@ const MovieDetails = () => {
         <div className="detalTxt">
           <h3>
             {original_title}
-            <span>({data})</span>
+            <span>({release_date?.slice(0, 4)})</span>
           </h3>
           <p>User Score: {Math.ceil(vote_average * 10)}%</p>
           <h4>Overview</h4>
@@ -75,11 +71,10 @@ const MovieDetails = () => {
           <h5>Genres 📼</h5>
 
           <ul className="listGanreItem">
-            {genres.map(({ name, id }) => (
+            {genres?.map(({ name, id }) => (
               <UniversList name={name} key={id} />
             ))}
           </ul>
-
           <p>Additional information ⤵️ ⚓ </p>
         </div>
       </div>

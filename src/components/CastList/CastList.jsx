@@ -20,8 +20,8 @@ const CastList = ({ character, id, profile_path, name }) => {
 // протайпи
 CastList.propTypes = {
   character: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  profile_path: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  profile_path: PropTypes.string,
   name: PropTypes.string.isRequired,
 };
 

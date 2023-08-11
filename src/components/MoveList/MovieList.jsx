@@ -1,6 +1,5 @@
 import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
-
 import css from './movList.module.css';
 
 // список фільмів

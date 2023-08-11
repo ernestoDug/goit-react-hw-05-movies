@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
 import styled from 'styled-components';
 
 // для повертання
@@ -30,4 +29,5 @@ export const BackLink = ({ to, children }) => {
 // проптайпи
 BackLink.propTypes = {
   children: PropTypes.node,
+  to: PropTypes.string.isRequired,
 };
