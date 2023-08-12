@@ -18,7 +18,7 @@ const Reviews = () => {
     fetcherrw(id)
       .then(resp => {
         setResponseMovsRew(resp.data.results);
-        console.log(resp.data.results, 77777);
+        // console.log(resp.data.results, 77777);
       })
       .catch(error => {
         toast.warn(`🐒Sorry ${error} 🐒`);
@@ -42,11 +42,5 @@ const Reviews = () => {
     </section>
   );
 };
-
-// Modal.propTypes = {
-//   largeImageURL: PropTypes.string.isRequired,
-//   tag: PropTypes.string.isRequired,
-//   modalCloser: PropTypes.func.isRequired,
-// };
 
 export default Reviews;

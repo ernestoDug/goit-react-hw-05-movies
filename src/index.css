@@ -55,6 +55,7 @@ body {
 .listGanreItem {
   list-style: none;
   justify-content: space-around;
+  
 }
 .wrapBtnImgMovDet {
   display: flex;
@@ -101,6 +102,7 @@ body {
   background: linear-gradient(45deg, #fff1eb, #aee8db);
   border-radius: 20px/60px;
   margin-top: 25px;
+  padding-left: 45px;
 }
 
 /* *************************************** */
