@@ -6,7 +6,6 @@ import BarChart from 'components/Loader/Loader';
 import 'react-toastify/dist/ReactToastify.css';
 import MovieList from 'components/MoveList/MovieList';
 import { fetchenr } from 'helpers/fetchenr';
-
 import Searchbar from 'components/Searchbar/Searchbar';
 
 const Movies = () => {

@@ -14,6 +14,7 @@ const Cast = () => {
 
   const { id } = useParams();
 
+  // для поверенн,
   useEffect(() => {
     setLoading(true);
     fetchecr(id)
@@ -30,7 +31,9 @@ const Cast = () => {
       });
   }, [id]);
 
-  return (
+  return responseMovsCast.length === 0 ? (
+    <p className={css.sorryCast}>Sorry, there are no casts for this movie</p>
+  ) : (
     <section>
       {loading && <BarChart />}
 

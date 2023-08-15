@@ -28,6 +28,8 @@ const MovieDetails = () => {
   // для поверення
   const location = useLocation();
   const back = location.state?.from ?? '/';
+  console.log(location, 555);
+  console.log(location.state, 666);
 
   useEffect(() => {
     setLoading(true);
@@ -78,15 +80,16 @@ const MovieDetails = () => {
           <p>Additional information ⤵️ ⚓ </p>
         </div>
       </div>
+
       <ul className="navDet">
         <li className="castRewieItm">
-          <Link className="castRewie" to="cast">
+          <Link className="castRewie" to={'cast'} state={location.state}>
             Cast 📮
           </Link>
         </li>
 
         <li className="castRewieItm">
-          <Link className="castRewie" to="reviews">
+          <Link className="castRewie" to={'reviews'} state={location.state}>
             Reviews ✒️
           </Link>
         </li>

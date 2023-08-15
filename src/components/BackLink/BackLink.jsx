@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-// для повертання
 const StyledLink = styled(Link)`
   box-shadow: 1px 1px #53eaae, 2px 2px #53eac4, 3px 3px #53eaea;
   background-color: #22ae8b;
@@ -14,13 +13,14 @@ const StyledLink = styled(Link)`
   border-radius: 20px/60px;
   margin-bottom: 10px;
   width: 150px;
-
+  
   &:hover {
     background-color: #88d122;
     transform: rotate(-10deg);
     color: #320960;
   }
-`;
+  `;
+  // для повертання
 
 export const BackLink = ({ to, children }) => {
   return <StyledLink to={to}>{children}</StyledLink>;

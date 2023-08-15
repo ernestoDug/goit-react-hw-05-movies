@@ -4,3 +4,10 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+
+.sorryCast{
+  color: rgb(227, 76, 21);
+  font-size: larger;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
